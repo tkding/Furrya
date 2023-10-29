@@ -8,31 +8,39 @@ import { useNavigate } from "react-router-dom";
 import { collection, getDocs, orderBy, query } from "firebase/firestore";
 
 export const UserPostMain = () => {
-    const [user] = useAuthState(auth);
-    
-    const navigate = useNavigate();
+  const [user] = useAuthState(auth);
 
-    const userPostsListContext = useContext(AppContext).postsList?.filter(post => post.userId === user?.uid) as IPost[];
-    const [userPostsList, setUserPostsList] = useState<IPost[]>(userPostsListContext);
+  const navigate = useNavigate();
 
-    useEffect(() => {
-        // console.log("called useEffect in UserPostMain");
-        if(!user){
-            alert("You must be logged in to view this page.");
-            navigate("/");
-        }
-    },[]);
+  const userPostsListContext = useContext(AppContext).postsList?.filter(
+    (post) => post.userId === user?.uid
+  ) as IPost[];
+  const [userPostsList, setUserPostsList] =
+    useState<IPost[]>(userPostsListContext);
 
-    return (
-        <div>
-            <h1>{user?.displayName}'s Posts</h1>
-            {!userPostsList?.length && <>
-                <p>No posts yet.</p>
-            </>}
-            {userPostsList?.map(post => (
-                <UserPost key={post.id} post={post} setUserPostsList={setUserPostsList} />
-                )
-            )}
-        </div>
-    );
+  useEffect(() => {
+    // console.log("called useEffect in UserPostMain");
+    if (!user) {
+      alert("You must be logged in to view this page.");
+      navigate("/login");
+    }
+  }, []);
+
+  return (
+    <div>
+      <h1>{user?.displayName}'s Posts</h1>
+      {!userPostsList?.length && (
+        <>
+          <p>No posts yet.</p>
+        </>
+      )}
+      {userPostsList?.map((post) => (
+        <UserPost
+          key={post.id}
+          post={post}
+          setUserPostsList={setUserPostsList}
+        />
+      ))}
+    </div>
+  );
 };

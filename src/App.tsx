@@ -2,7 +2,7 @@ import React from "react";
 import "./App.css";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import { ChatMain } from "./pages/chat-page/chat-main";
-import { Navbar } from "./components/Navbar";
+import { NavigationBar } from "./components/Navbar";
 import { CreatePost } from "./pages/create-post/create-post";
 import { PostMain } from "./pages/post-page/post-main";
 import { useState, createContext, useEffect } from "react";
@@ -16,6 +16,8 @@ import {
   orderBy,
   query,
 } from "firebase/firestore";
+
+import { Login } from "./pages/login-page/login";
 
 export interface Post {
   title: string;
@@ -58,25 +60,35 @@ function App() {
 
   return (
     <div className="App">
-      <meta charSet="utf-8" />
-      <meta name="viewport" content="width=device-width, initial-scale=1" />
-      <AppContext.Provider
-        value={{ room, setRoom, postsList, setPostsList, likes, setLikes }}
-      >
-        <Router>
-          <Navbar />
-          <Routes>
-            <Route path="/" element={<PostMain />} />
-            <Route
-              path={`/user/${user?.displayName}`}
-              element={<UserPostMain />}
-            />
-            <Route path="/createpost" element={<CreatePost />} />
-            <Route path="/chat" element={<ChatMain />} />
-            <Route path="*" element={<h1>404 Not Found</h1>} />
-          </Routes>
-        </Router>
-      </AppContext.Provider>
+      <head>
+        <link
+          rel="stylesheet"
+          href="https://use.fontawesome.com/releases/v5.8.2/css/all.css"
+        />
+        <meta charSet="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+      </head>
+
+      <body>
+        <AppContext.Provider
+          value={{ room, setRoom, postsList, setPostsList, likes, setLikes }}
+        >
+          <Router>
+            <NavigationBar />
+            <Routes>
+              <Route path="/" element={<PostMain />} />
+              <Route
+                path={`/user/${user?.displayName}`}
+                element={<UserPostMain />}
+              />
+              <Route path="/createpost" element={<CreatePost />} />
+              <Route path="/chat" element={<ChatMain />} />
+              <Route path="/login" element={<Login />} />
+              <Route path="*" element={<h1>404 Not Found</h1>} />
+            </Routes>
+          </Router>
+        </AppContext.Provider>
+      </body>
     </div>
   );
 }

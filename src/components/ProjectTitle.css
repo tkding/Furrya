@@ -1,0 +1,40 @@
+/* project title */
+@import url("https://fonts.googleapis.com/css2?family=Russo+One&display=swap");
+
+.svg-box{
+    width: 200px;
+    height: 50px;
+}
+svg {
+	font-family: "Russo One", sans-serif;
+	width: 100%; 
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+svg text:hover {
+	animation: stroke 5s infinite alternate;
+	stroke-width: 2;
+	stroke: #FF8C00;
+}
+
+@keyframes stroke {
+	0%   {
+		fill: rgba(255,127,80,0); stroke: rgba(255,127,80,1);
+		stroke-dashoffset: 25%; stroke-dasharray: 0 50%; stroke-width: 2;
+	}
+	70%  {fill: rgba(255,127,80,0); stroke: rgba(255,140,0,1); }
+	80%  {fill: rgba(255,127,80,0); stroke: rgba(255,127,80,1); stroke-width: 3; }
+	100% {
+		fill: rgba(255,127,80,1); stroke: rgba(255,140,0,0);
+		stroke-dashoffset: -25%; stroke-dasharray: 50% 0; stroke-width: 0;
+	}
+}
+
+.project-title {
+    font-size: 2.5rem;
+    font-weight: bold;
+    color: rgba(255,127,80,1);
+    fill: rgba(255,127,80,1);
+    text-shadow: 2px 2px whitesmoke;
+}
