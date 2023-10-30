@@ -12,7 +12,7 @@
 
 /* make background span entire page */
 .container-login{
-    min-height: 100vh;
+    min-height: calc(100vh - 76px);
     width: 100%;
     background: linear-gradient(
         45deg,
@@ -25,7 +25,7 @@
 
 .card.login-card {
     margin: 0 auto;
-    background-color: rgba(256, 256, 256, 0.3);
+    background-color: rgba(256, 256, 256, 0.5);
     backdrop-filter: blur(30px);
     min-height: 250px;
     border-color: #ffc93cbb;
@@ -48,6 +48,14 @@
 .btn.btn-login:hover {
     background-color: #ffc93cbb;
     color: #110d11ff;
-    border: none;
+    border-color: none;
+    cursor: pointer;
+    
+}
+
+.btn.btn-login:active, .btn.btn-login:focus, .btn.btn-login:visited {
+    background-color: #ffc83ce0;
+    color: #110d11ff;
+    border-color: none;
     cursor: pointer;
 }

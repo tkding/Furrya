@@ -28,7 +28,7 @@ export const Login = () => {
                 </p>
                 <button
                   type="button"
-                  className="btn btn-primary btn-login"
+                  className="btn btn-login"
                   onClick={signInWithGoogle}
                 >
                   <i className="fab fa-google"></i> Login

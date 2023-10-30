@@ -59,10 +59,10 @@ export const NavigationBar = () => {
               </div>
             )}
             {user && (
-              <div className="right-content">
+              <div className="right-conten">
                 <LinkContainer to={`/user/${user?.displayName}`}>
                   <Nav.Link>
-                    <div className="user-info">
+                    <div className="user-info  d-flex align-items-start">
                       <img
                         className="profile-pic"
                         src={user?.photoURL || ""}
@@ -70,7 +70,6 @@ export const NavigationBar = () => {
                         height="25"
                         alt=""
                       />
-                      <p className="log-in-text"> </p>
                       <p className="log-in-text short-text">
                         {user?.displayName}
                       </p>

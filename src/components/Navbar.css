@@ -9,13 +9,7 @@
     font-size: 18px;
 }
 
-/* Styles for link */
-div a {
-    color: white;
-    text-decoration: underline;
-    margin-right:20px;
-    transition: color 0.3s, text-decoration 0.3s;
-}
+
 
 /* Styles for right content */
  /* make it stick to web-name */
@@ -52,8 +46,8 @@ div a {
     /* best font for username */
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     font-weight: 500;
-    margin-bottom: -1px;
     align-self: center;
+    margin-left: 5px;
 }
 
 /* Styles for profile-pic */
@@ -70,6 +64,7 @@ div a {
     justify-content: center;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     margin: 0;
+    padding: 0;
 }
 
 @media (min-width: 768px) {
@@ -78,6 +73,10 @@ div a {
         white-space: nowrap;
         overflow: hidden;
         text-overflow: ellipsis;
+    }
+
+    .user-info {
+        margin-bottom: -10px;
     }
 }
   

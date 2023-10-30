@@ -1,0 +1,170 @@
+:root {
+    --main-color-chat: #F06236;
+    --secondary-color-chat: #f5654b;
+    --third-color-chat: #fffdd0;
+
+    --main-bg-color: #ffc93caa;
+    --secondary-bg-color: #ff9a3caa;
+    --third-bg-color: #ff6f3caa;
+}
+
+.chat-room-container{
+    background: linear-gradient(
+        45deg,
+        var(--main-bg-color),
+        var(--secondary-bg-color),
+        var(--third-bg-color)
+    );
+    position: relative;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    min-height: calc(100vh - 76px);
+    margin: 0;
+    padding: 20px;
+}
+
+.chat-btn{
+    background-color: var(--third-color-chat);
+    color: var(--main-color-chat);
+    border: 1px solid var(--main-color-chat);
+    border-radius: 5px;
+    padding: 5px 10px;
+    font-size: 0.9rem;
+    transition: background-color 0.3s, color 0.3s, border 0.3s;
+    font-weight: 700;
+}
+    
+.chat-btn:hover {
+    background-color: var(--main-color-chat);
+    color: var(--third-color-chat);
+    border-color: none;
+    cursor: pointer;
+    
+} 
+
+#room-input {
+    background-color: var(--third-color-chat);
+    border-radius: 5px;
+    border-color: var(--third-color-chat);
+    font-weight: 450;
+}
+
+.card.room-card {
+    background: linear-gradient(
+        75deg,
+        var(--main-bg-color),
+        var(--secondary-bg-color),
+        var(--third-bg-color)
+    );
+    backdrop-filter: blur(30px);
+    border-color: #ffc93cbb;
+    box-shadow: #ffba7a 0px 0px 10px 0px;
+    font-weight: 500; 
+}
+
+.card.room-card:hover {
+    background: linear-gradient(
+        75deg,
+        var(--third-bg-color),
+        var(--secondary-bg-color),
+        var(--main-bg-color)
+    );
+    backdrop-filter: blur(30px);
+    border-color: #ffc93cbb;
+    box-shadow: #ffba7a 0px 0px 10px 0px;
+    font-weight: 500; 
+}
+
+/* make a cool heading with shadow */
+.card.room-card h5 {
+    font-weight:  bolder;
+    font-size: 1.5rem;
+    color: #110d11ff;
+    text-shadow: 1px 1px silver;
+}
+
+/* make a cool p tag with blur background to highlight the text */
+.card.room-card p {
+    font-weight: 500;
+    font-size: 1.2rem;
+    color: #110d11ff;
+}
+
+/* give emoji some background and style to make the pop */
+/* only around the emoji */
+.card.room-card .emoji {
+    background-color: rgba(25, 25, 112, 0.8);
+    text-shadow: 2px 2px 2px rgba(0, 0, 0, 0.5);
+    border-radius: 30%;
+    border-color: #ffd8a9;
+    padding: 5px;
+    font-size: 1.5rem;
+    width:fit-content;
+    margin: 0 auto;
+}
+
+
+.room-title {
+    font-size: 2.5rem;
+    font-weight: bolder;
+    color: var(--main-color-chat);
+    fill: var(--main-color-chat);
+    text-shadow: 1px 1px var(--third-color-chat);
+}
+
+.chat-header {
+    border-bottom: none;
+    font-size: 2rem;
+    font-weight: bolder;
+    color: var(--main-color-chat);
+    fill: var(--main-color-chat);
+    text-shadow: 1px 1px var(--third-color-chat);
+}
+
+.chat-box {
+    border: 1px solid var(--main-color-chat);
+    height: 300px;
+    width: 100%;
+    margin: 0 auto;
+}
+
+.chat-messages {
+    width: 100%;
+    height: calc(100% - 38px);
+    overflow-y: auto;
+}
+
+.new-message-form {
+    width: 100%;
+}
+
+.form-control.new-message-input {
+    background-color: var(--third-color-chat);
+    border: 1px solid var(--main-color-chat);
+}
+
+.message-info {
+    border: 1px solid var(--main-color-chat);
+    border-radius: 5px;
+    width: fit-content;
+    padding: 5px;
+    margin-bottom: 5px;
+    font-weight: 450;
+    font-size: 0.9rem;
+    font-family: Helvetica, Arial, sans-serif;
+    max-width: 80%;
+}
+
+.message-info.message-user{
+    background-color: var(--main-color-chat);
+    color: var(--third-color-chat);
+    margin-right: 5px;
+}
+
+.message-info.message-other{
+    background-color: var(--third-color-chat);
+    color: var(--main-color-chat);
+    margin-left: 5px;
+}

@@ -1,6 +1,11 @@
 /* project title */
 @import url("https://fonts.googleapis.com/css2?family=Russo+One&display=swap");
 
+:root {
+    --main-color: #F06236;
+    --secondary-color: hwb(47 4% 1%);
+    --third-color: #fdfdfd;
+}
 .svg-box{
     width: 200px;
     height: 50px;
@@ -20,13 +25,13 @@ svg text:hover {
 
 @keyframes stroke {
 	0%   {
-		fill: rgba(255,127,80,0); stroke: rgba(255,127,80,1);
+		fill: rgba(255,127,80,0); stroke: var(--main-color);
 		stroke-dashoffset: 25%; stroke-dasharray: 0 50%; stroke-width: 2;
 	}
-	70%  {fill: rgba(255,127,80,0); stroke: rgba(255,140,0,1); }
-	80%  {fill: rgba(255,127,80,0); stroke: rgba(255,127,80,1); stroke-width: 3; }
+	70%  {fill: rgba(255,127,80,0); stroke: var(--secondary-color); }
+	80%  {fill: rgba(255,127,80,0); stroke: var(--main-color); stroke-width: 3; }
 	100% {
-		fill: rgba(255,127,80,1); stroke: rgba(255,140,0,0);
+		fill: var(--main-color); stroke: rgba(255,140,0,0);
 		stroke-dashoffset: -25%; stroke-dasharray: 50% 0; stroke-width: 0;
 	}
 }
@@ -34,7 +39,7 @@ svg text:hover {
 .project-title {
     font-size: 2.5rem;
     font-weight: bold;
-    color: rgba(255,127,80,1);
-    fill: rgba(255,127,80,1);
-    text-shadow: 2px 2px whitesmoke;
+    color: var(--main-color);
+    fill: var(--main-color);
+    text-shadow: 2px 2px var(--third-color);
 }
