@@ -1,5 +1,5 @@
 {
-  "name": "furrya",
+  "name": "furryasocial",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
@@ -53,35 +53,5 @@
   },
   "devDependencies": {
     "@types/react-router-bootstrap": "^0.26.5"
-  },
-  "description": "This is a React web application that allows users to interact with a real-time messaging system and post and view content. The application is built using React, JavaScript, CSS, HTML, Firebase, and Firestore. Users are required to sign in with their Google account to access the functionality.",
-  "main": "index.tsx",
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/tkding/Furrya.git"
-  },
-  "keywords": [
-    "social",
-    "media",
-    "shop",
-    "pet",
-    "fashion",
-    "chat",
-    "latest",
-    "cute",
-    "kawaii",
-    "new",
-    "dog",
-    "cat",
-    "hamster",
-    "bird",
-    "parrot",
-    "snake"
-  ],
-  "author": "Tech Kern Ding",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/tkding/Furrya/issues"
-  },
-  "homepage": "https://github.com/tkding/Furrya#readme"
+  }
 }

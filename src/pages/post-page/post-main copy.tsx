@@ -9,7 +9,6 @@ import {
   orderBy,
   where,
   onSnapshot,
-  Unsubscribe,
 } from "firebase/firestore";
 import { auth, db } from "../../config/firebase";
 
@@ -58,20 +57,8 @@ export const PostMain = () => {
           posts.push({ id: doc.id, ...doc.data() } as IPost);
         });
         setPostsList(posts);
-
-        // Call setPagination here, after updating postsList
-        setPagination((prevState) => ({
-          ...prevState,
-          currentData: postsList?.slice(
-            prevState.offset,
-            prevState.offset + prevState.numberPerPage
-          ) as IPost[],
-          pageCount: Math.ceil(
-            (postsList ? postsList.length : 1) / prevState.numberPerPage
-          ),
-        }));
+        return () => unsubscribe;
       });
-      return () => unsubscribe;
       // const data = await getDocs(query(postsRef, orderBy("createAt", "desc")));
       // setPostsList(data.docs.map(doc => ({...doc.data(), id: doc.id})) as IPost[] );
     } catch (error) {
@@ -94,8 +81,9 @@ export const PostMain = () => {
         } as ILikes);
       });
       setLikes(likes);
+      return () => unsubscribe;
     });
-    return () => unsubscribe;
+
     // const data = await getDocs(likesDoc);
     // setLikes(data.docs.map(doc => ({userId: doc.data().userId, postId: doc.data().postId, id: doc.id})) as ILikes[] );
   };
@@ -108,10 +96,22 @@ export const PostMain = () => {
       console.log("called useEffect in PostMain");
       user && getPosts();
       user && getLikes(); // TODO how to unscubscribe?
+
+      // Call setPagination here, after updating postsList
+      setPagination((prevState) => ({
+        ...prevState,
+        currentData: postsList?.slice(
+          prevState.offset,
+          prevState.offset + prevState.numberPerPage
+        ) as IPost[],
+        pageCount: Math.ceil(
+          (postsList ? postsList.length : 1) / prevState.numberPerPage
+        ),
+      }));
     } catch (error) {
       console.log(error);
     }
-  }, [user]);
+  }, [pagination, user, disabled]);
 
   const handlePageClick = (event: any) => {
     const selected = event.selected;
@@ -153,6 +153,11 @@ export const PostMain = () => {
         containerClassName={"pagination"}
         activeClassName={"active"}
       />
+
+      {/* {postsList?.map(post => (
+                <Post key={post.id} post={post}/>
+                )
+            )} */}
     </div>
   );
 };
