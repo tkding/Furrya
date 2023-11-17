@@ -26,6 +26,8 @@ import { unsubscribe } from "diagnostics_channel";
 
 import { useNavigate } from "react-router-dom";
 
+import "./post-main.css";
+
 interface Pagination {
   data: IPost[] | null;
   offset: number;
@@ -128,11 +130,21 @@ export const PostMain = () => {
   }
 
   return (
-    <div>
-      <h1>Posts</h1>
+    <div className="post-container">
+      <h1 className="post-title">Posts</h1>
 
       {pagination.currentData ? (
-        pagination.currentData.map((post) => <Post key={post.id} post={post} />)
+        pagination.currentData.map((post) => (
+          <div className="container">
+            <div className="row">
+              <div className="col"></div>
+              <div className="col-lg-8 col-md-12">
+                <Post key={post.id} post={post} />
+              </div>
+              <div className="col"></div>
+            </div>
+          </div>
+        ))
       ) : (
         <>
           <h2> No Post</h2>

@@ -7,6 +7,9 @@ import { Post as IPost, Likes as ILikes, AppContext } from "../../App";
 import { useNavigate } from "react-router-dom";
 import { collection, getDocs, orderBy, query } from "firebase/firestore";
 
+import "./user-post.css";
+import "../post-page/post-main.css";
+
 export const UserPostMain = () => {
   const [user] = useAuthState(auth);
 
@@ -27,19 +30,27 @@ export const UserPostMain = () => {
   }, []);
 
   return (
-    <div>
-      <h1>{user?.displayName}'s Posts</h1>
+    <div className="post-container">
+      <h1 className="post-title">{user?.displayName}'s Posts</h1>
       {!userPostsList?.length && (
         <>
           <p>No posts yet.</p>
         </>
       )}
       {userPostsList?.map((post) => (
-        <UserPost
-          key={post.id}
-          post={post}
-          setUserPostsList={setUserPostsList}
-        />
+        <div className="container">
+          <div className="row">
+            <div className="col"></div>
+            <div className="col-lg-8 col-md-12">
+              <UserPost
+                key={post.id}
+                post={post}
+                setUserPostsList={setUserPostsList}
+              />
+            </div>
+            <div className="col"></div>
+          </div>
+        </div>
       ))}
     </div>
   );

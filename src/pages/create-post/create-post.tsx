@@ -9,6 +9,8 @@ import { useNavigate } from "react-router-dom";
 import { AppContext } from "../../App";
 import { useContext } from "react";
 
+import "./CreatePost.css";
+
 export const CreatePost = () => {
   const [user] = useAuthState(auth);
   const navigate = useNavigate();
@@ -38,9 +40,13 @@ export const CreatePost = () => {
   }, []);
 
   return (
-    <div className="form-container">
-      <h1>Create post page</h1>
-      <CreateForm />
+    <div className="create_post-container d-flex justify-content-center align-items-center">
+      <div className="card mb-3 shadow-5-strong create_post-card">
+        <div className="card-header login-header">
+          <h2>Create Post</h2>
+        </div>
+        <CreateForm />
+      </div>
     </div>
   );
 };

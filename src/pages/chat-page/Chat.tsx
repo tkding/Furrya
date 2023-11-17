@@ -111,6 +111,7 @@ export const Chat = ({ ChatProps }: ChatProps) => {
       <h1 className="chat-header">Chat</h1>
       <div className="container">
         <div className="row">
+          <div className="col"></div>
           <div className="col-lg-8 col-md-12">
             <div className="chat-box">
               <div className="chat-messages">
@@ -162,6 +163,7 @@ export const Chat = ({ ChatProps }: ChatProps) => {
               </form>
             </div>
           </div>
+          <div className="col"></div>
         </div>
       </div>
     </div>

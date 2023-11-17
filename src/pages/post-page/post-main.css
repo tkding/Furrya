@@ -1,0 +1,106 @@
+.post-container{
+    background: linear-gradient(
+        45deg,
+        var(--main-bg-color),
+        var(--secondary-bg-color),
+        var(--third-bg-color)
+    );
+    position: relative;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    min-height: calc(100vh - 76px);
+    margin: 0;
+    padding: 20px;
+}
+
+.post-title {
+    font-size: 2.5rem;
+    font-weight: bolder;
+    color: var(--main-color-chat);
+    fill: var(--main-color-chat);
+    text-shadow: 1px 1px var(--third-color-chat);
+}
+
+.card-post {
+    background-color: rgba(255, 255, 255, 0.5);
+    color: var(--main-color-chat);
+    border: 1px solid var(--main-color-chat);
+    border-radius: 5px;
+    padding: 5px 10px;
+    font-size: 0.9rem;
+    transition: background-color 0.3s, color 0.3s, border 0.3s;
+    font-weight: 700;
+    margin-bottom: 10px;
+    align-self: center;
+}
+
+.card-text.description {
+    font-size: 1.2rem;
+    font-weight: 500;
+    margin-bottom: 5px;
+    color: var(--secondary-color-chat);
+}
+
+.card-subtitle.username {
+    font-size: 1rem;
+    font-weight: 500;
+    margin-bottom: 5px;
+    color: rgba(66, 66, 65, 0.888);
+}
+
+/* Like Button */
+.btn-like {
+    background-color: #FFA500; /* Orange */
+    color: #FFFFFF; /* White */
+    border: 2px solid #FF8C00; /* Dark Orange */
+    border-radius: 5px;
+}
+
+.btn-like:hover {
+    background-color: #FF8C00; /* Dark Orange */
+    color: #FFFFFF; /* White */
+    border: 2px solid #FFA500; /* Orange */
+    border-radius: 5px;
+}
+
+/* Unlike Button */
+.btn-unlike {
+    background-color: #f89f7f;
+    color: #FFDAB9;  /* Peach Puff */
+    border: 2px solid #FF8C00; /* Dark Orange */
+    border-radius: 5px;
+}
+
+.btn-unlike:hover{
+    background-color: #FF8C00; /* Dark Orange */
+    color: #FFFFFF; /* White */
+    border: 2px solid #FFA500; /* Orange */
+    border-radius: 5px;
+}
+
+.likes{
+    font-size: 1rem;
+    font-weight: 600;
+    margin-bottom: 5px;
+    color: var(--secondary-color-chat);
+}
+
+/* Delete Button */
+.btn-delete {
+    font-size: 1rem;
+    font-weight: 600;
+    margin-bottom: 5px;
+    color: var(--secondary-color-chat);
+    background-color: #FF0000; /* Red */
+    color: #FFFFFF; /* White */
+    border: 2px solid #B22222; /* Firebrick */
+    border-radius: 5px;
+}
+
+.btn-delete:hover {
+    background-color: #B22222; /* Firebrick */
+    color: #FFFFFF; /* White */
+    border: 2px solid #FF0000; /* Red */
+}

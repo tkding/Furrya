@@ -17,68 +17,78 @@ import { useNavigate } from "react-router-dom";
 import { Post as IPost, AppContext } from "../../App";
 import { time } from "console";
 
+import "./CreatePost.css";
+
 interface FormData {
-    title: string;
-    description: string;
+  title: string;
+  description: string;
 }
 
 export const CreateForm = () => {
-    const [ user ] = useAuthState(auth);
-    const navigate = useNavigate();
-    const { postsList, setPostsList } = useContext(AppContext);
+  const [user] = useAuthState(auth);
+  const navigate = useNavigate();
+  const { postsList, setPostsList } = useContext(AppContext);
 
-    // yup validation 
-    const schema = yup.object().shape({
-        title: yup.string().required("title is required"),
-        description: yup.string().required("description is required"),
+  // yup validation
+  const schema = yup.object().shape({
+    title: yup.string().required("title is required"),
+    description: yup.string().required("description is required"),
+  });
+
+  // form hook
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm<FormData>({
+    resolver: yupResolver(schema),
+  });
+
+  const postsRef = collection(db, "posts");
+
+  // submit handler
+  const onCreatePost = async (data: FormData) => {
+    const newDoc = await addDoc(postsRef, {
+      ...data,
+      username: user?.displayName,
+      userId: user?.uid,
+      createAt: serverTimestamp(),
     });
-    
-    // form hook
-    const {
-        register,
-        handleSubmit,
-        formState: { errors },
-    } = useForm<FormData>({
-        resolver: yupResolver(schema),
-    });
 
-    const postsRef = collection(db, "posts");
+    // Update postsList
+    // if (user) {
+    //     setPostsList((prev) => {
+    //         const newPost = {
+    //             ...data,
+    //             username: user.displayName || "", // Assign an empty string if displayName is null
+    //             userId: user.uid || "", // Assign an empty string if uid is null
+    //             createAt: serverTimestamp(),
+    //             id: newDoc.id,
+    //         };
 
-    // submit handler
-    const onCreatePost = async (data: FormData) => {
-        const newDoc = await addDoc(postsRef, {
-            ...data,
-            username: user?.displayName,
-            userId: user?.uid,
-            createAt: serverTimestamp()
-        });
-        
-        // Update postsList
-        // if (user) {
-        //     setPostsList((prev) => {
-        //         const newPost = {
-        //             ...data,
-        //             username: user.displayName || "", // Assign an empty string if displayName is null
-        //             userId: user.uid || "", // Assign an empty string if uid is null
-        //             createAt: serverTimestamp(),
-        //             id: newDoc.id,
-        //         };
-            
-        //         return prev ? [newPost, ...prev] : [newPost];
-        //     });
-        // }
+    //         return prev ? [newPost, ...prev] : [newPost];
+    //     });
+    // }
 
+    navigate("/");
+  };
 
-        navigate("/");
-    };
-    
-    return (
-        <form onSubmit={handleSubmit(onCreatePost)}>
-            <input type="text" placeholder="Title" {...register("title")} />
-            <p style={{color: "red"}}>{errors.title?.message}</p>
-            <textarea placeholder="Description" {...register("description")} />
-            <p style={{color: "red"}}>{errors.description?.message}</p>
-            <input className="form-submit-btn" type="submit" />
-        </form>
-    );
+  return (
+    <form onSubmit={handleSubmit(onCreatePost)}>
+      <input
+        className="txt-new_title"
+        type="text"
+        placeholder="Title"
+        {...register("title")}
+      />
+      <p style={{ color: "red" }}>{errors.title?.message}</p>
+      <textarea
+        className="txtarea-description"
+        placeholder="Description"
+        {...register("description")}
+      />
+      <p style={{ color: "red" }}>{errors.description?.message}</p>
+      <input className="btn btn-create_post" type="submit" />
+    </form>
+  );
 };
